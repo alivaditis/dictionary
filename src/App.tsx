@@ -1,6 +1,6 @@
 import React from 'react';
 import logo from './logo.svg';
-import './App.css';
+import './styles/App.scss';
 
 function App() {
   return (
@@ -13,6 +13,19 @@ function App() {
           <p>
             word
           </p>
+        </div>
+        <div className='word-type'>
+          <p>
+            noun
+          </p>
+          <div className='seperator'>
+          </div>
+          <p>
+            meaning
+          </p>
+          <li>
+
+          </li>
         </div>
       </div>
     </div>
