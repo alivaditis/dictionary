@@ -19,7 +19,7 @@ const Meaning = ({meaning}: {meaning: MeaningProps}) => {
         <li>
           {definition.definition}
         </li>
-        <p>{definition.example}</p>
+        <p>{definition.example && `"${definition.example}"`}</p>
       </>)
     })
 
@@ -37,7 +37,7 @@ const Meaning = ({meaning}: {meaning: MeaningProps}) => {
       <ul>
         {definitions}
       </ul>
-      <p>Synonynms {meaning.synonyms[0]}</p>
+      <p>{meaning.synonyms.length>0 && 'Synonynms'} {meaning.synonyms[0]}</p>
     </div>
   )
 }

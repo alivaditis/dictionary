@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect,  } from 'react';
 import logo from './logo.svg';
 import { getWord } from './api';
 import { SingleWord } from './types';
@@ -13,7 +13,7 @@ function App() {
 
  
   useEffect(() => {
-    getWord('keyboard')
+    getWord('weirdo')
     .then(data => setWord(data[0]))
   }, [])
 
@@ -29,6 +29,8 @@ function App() {
           </p>
         </div>
         {word && meanings}
+        <p>Source</p>
+        <a href={word?.sourceUrls[0]}>{word?.sourceUrls[0]}</a>
       </div>
     </div>
   );
