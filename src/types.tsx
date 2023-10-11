@@ -8,7 +8,7 @@ type SingleWord = {
       name: string;
       url: string;
     };
-    text?: string;
+    text: string | undefined;
   }[];
   meanings: {
     partOfSpeech: string;
