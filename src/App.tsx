@@ -8,7 +8,7 @@ import Searchbar from './components/Searchbar';
 function App() {
   const [word, setWord] = useState<SingleWord | undefined>()
   const [query, setQuery] = useState('nice')
-  const [isDark, setIsDark] = useState(false)
+  const [isDark, setIsDark] = useState(true)
 
   const submitSearch = (e: React.FormEvent) => {
     e.preventDefault()
@@ -24,22 +24,24 @@ function App() {
   const meanings = word?.meanings.map(meaning => <Meaning meaning={meaning}/>)
 
   return (
-    <div className ='app' data-theme={isDark ? 'dark' : 'light'}>
-      <Searchbar query={query} setQuery={setQuery} submitSearch={submitSearch}/>
-      <div className='word-container'>
-        <div className='word-column'>
-          <h1>
-            {word?.word}
-          </h1>
-          <p className='phonetic'>
-            {word?.phonetics[0].text && word?.phonetics[0].text}
-          </p>
+    <main data-theme={isDark ? 'dark' : 'light'}>
+      <div className='app'>
+        <Searchbar query={query} setQuery={setQuery} submitSearch={submitSearch}/>
+        <div className='word-container'>
+          <div className='word-column'>
+            <h1>
+              {word?.word}
+            </h1>
+            <p className='phonetic'>
+              {word?.phonetics[0].text && word?.phonetics[0].text}
+            </p>
+          </div>
+          {word && meanings}
+          <p>Source</p>
+          <a className='source' href={word?.sourceUrls[0]}>{word?.sourceUrls[0]}</a>
         </div>
-        {word && meanings}
-        <p>Source</p>
-        <a className='source' href={word?.sourceUrls[0]}>{word?.sourceUrls[0]}</a>
       </div>
-    </div>
+    </main>
   );
 }
 
