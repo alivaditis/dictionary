@@ -17,7 +17,7 @@ const Meaning = ({meaning}: {meaning: MeaningProps}) => {
     return (
       <>
         <li>
-          {definition.definition}
+          <span>{definition.definition}</span>
         </li>
         <p>{definition.example && `"${definition.example}"`}</p>
       </>)

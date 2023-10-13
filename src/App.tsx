@@ -1,3 +1,7 @@
+import logo from './images/logo.svg'
+import moon from './images/icon-moon.svg'
+import toggleLight from './images/Group.svg'
+import toggleDark from './images/Group2.svg'
 import { useState, useEffect,  } from 'react';
 import { getWord } from './api';
 import { SingleWord } from './types';
@@ -27,11 +31,17 @@ function App() {
   return (
     <main data-theme={isDark ? 'dark' : 'light'} style={{fontFamily: font}}>
       <div className='app'>
-        <select value={font} onChange={(e)=>setFont(e.target.value)}>
-          <option value='sans-serif'>Sans Serif</option>
-          <option value='serif'>Serif</option>
-          <option value='monospace'>Mono</option>
-        </select>
+        <nav>
+          <img src={logo}/>
+          <div className='nav-right'>
+            <select value={font} onChange={(e)=>setFont(e.target.value)}>
+              <option value='sans-serif'>Sans Serif</option>
+              <option value='serif'>Serif</option>
+              <option value='monospace'>Mono</option>
+            </select>
+            <img className='toggle' src={isDark ? toggleDark : toggleLight} onClick={() => setIsDark(!isDark)}/>
+          </div>
+        </nav>
         <Searchbar query={query} setQuery={setQuery} submitSearch={submitSearch}/>
         <div className='word-container'>
           <div className='word-column'>

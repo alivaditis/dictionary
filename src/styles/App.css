@@ -37,6 +37,23 @@ main {
   min-height: 100vh;
 }
 
+nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-right {
+  display: flex;
+}
+
+select:hover {
+  cursor: pointer;
+}
+
+.toggle:hover {
+  cursor: pointer;
+}
+
 select {
   border: none;
   background-color: var(--background);
@@ -63,6 +80,15 @@ h1 {
 
 ul {
   margin-top: 27px;
+  list-style-type: disc;
+}
+
+li {
+  color: var(--text-tertiary);
+}
+
+li span {
+  color: var(--text-primary);
 }
 
 .phonetic, .synonym {
