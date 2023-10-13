@@ -7,8 +7,9 @@ import Searchbar from './components/Searchbar';
 
 function App() {
   const [word, setWord] = useState<SingleWord | undefined>()
-  const [query, setQuery] = useState('nice')
+  const [query, setQuery] = useState('')
   const [isDark, setIsDark] = useState(true)
+  const [font, setFont] = useState('sans-serif')
 
   const submitSearch = (e: React.FormEvent) => {
     e.preventDefault()
@@ -17,15 +18,20 @@ function App() {
   }
   
   useEffect(() => {
-    getWord(query)
+    getWord('word')
     .then(data => setWord(data[0]))
   }, [])
   
   const meanings = word?.meanings.map(meaning => <Meaning meaning={meaning}/>)
 
   return (
-    <main data-theme={isDark ? 'dark' : 'light'}>
+    <main data-theme={isDark ? 'dark' : 'light'} style={{fontFamily: font}}>
       <div className='app'>
+        <select value={font} onChange={(e)=>setFont(e.target.value)}>
+          <option value='sans-serif'>Sans Serif</option>
+          <option value='serif'>Serif</option>
+          <option value='monospace'>Mono</option>
+        </select>
         <Searchbar query={query} setQuery={setQuery} submitSearch={submitSearch}/>
         <div className='word-container'>
           <div className='word-column'>
