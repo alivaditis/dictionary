@@ -17,7 +17,7 @@ const Meaning = ({meaning}: {meaning: MeaningProps}) => {
     return (
       <>
         <li>
-          {definition.definition}
+          <span>{definition.definition}</span>
         </li>
         <p>{definition.example && `"${definition.example}"`}</p>
       </>)
@@ -26,18 +26,18 @@ const Meaning = ({meaning}: {meaning: MeaningProps}) => {
 
   return (
     <div className='meanings'>
-      <p>
+      <p className='part-of-speech'>
         {meaning.partOfSpeech}
       </p>
       <div className='seperator'>
       </div>
-      <p>
+      <p className='mean'>
         Meaning
       </p>
       <ul>
         {definitions}
       </ul>
-      <p>{meaning.synonyms.length>0 && 'Synonynms'} {meaning.synonyms[0]}</p>
+      <p>{meaning.synonyms.length>0 && 'Synonynms'} <span className='synonym'>{meaning.synonyms[0]}</span></p>
     </div>
   )
 }
