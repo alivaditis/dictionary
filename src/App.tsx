@@ -16,7 +16,7 @@ function App() {
   const [font, setFont] = useState('sans-serif')
 
   
-  const audio = new Audio(word?.phonetics[0].audio)
+  const audio = new Audio(word?.phonetics[0]?.audio)
 
   const playAudio = () => {
     audio.play()
@@ -69,10 +69,10 @@ function App() {
                 {word?.word}
               </h1>
               <p className='phonetic'>
-                {word?.phonetics[0].text && word?.phonetics[0].text}
+              {word?.phonetics.length ? word?.phonetics[0].text && word?.phonetics[0].text : ''}
               </p>
             </div>
-            {word?.phonetics[0].audio && <button className='audio-button' onClick={playAudio}></button>}
+            {word?.phonetics.length ? word?.phonetics[0].audio && <button className='audio-button' onClick={playAudio}></button> : ''}
           </div>
           {word && meanings}
           <div className='seperator full-seperator'/>
