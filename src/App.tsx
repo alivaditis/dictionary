@@ -1,6 +1,5 @@
 import logo from './images/logo.svg'
-import toggleLight from './images/Group.svg'
-import toggleDark from './images/Group2.svg'
+import newWindow from './images/icon-new-window.svg'
 import { useState, useEffect,  } from 'react';
 import { getWord } from './api';
 import { SingleWord } from './types';
@@ -58,8 +57,9 @@ function App() {
             </p>
           </div>
           {word && meanings}
-          <p>Source</p>
-          <a className='source' href={word?.sourceUrls[0]}>{word?.sourceUrls[0]}</a>
+          <div className='seperator full-seperator'/>
+          <p className='source-heading'>Source</p>
+          <a className='source' href={word?.sourceUrls[0]}>{word?.sourceUrls[0]}<img className='new-window' src={newWindow}/></a>
         </div>
       </div>
     </main>
