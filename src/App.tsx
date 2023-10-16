@@ -1,7 +1,5 @@
 import logo from './images/logo.svg'
-import moon from './images/icon-moon.svg'
-import toggleLight from './images/Group.svg'
-import toggleDark from './images/Group2.svg'
+import newWindow from './images/icon-new-window.svg'
 import { useState, useEffect,  } from 'react';
 import { getWord } from './api';
 import { SingleWord } from './types';
@@ -12,13 +10,19 @@ import Searchbar from './components/Searchbar';
 function App() {
   const [word, setWord] = useState<SingleWord | undefined>()
   const [query, setQuery] = useState('')
+  const [searchEmpty, setSearchEmpty] = useState(false)
   const [isDark, setIsDark] = useState(true)
   const [font, setFont] = useState('sans-serif')
 
   const submitSearch = (e: React.FormEvent) => {
     e.preventDefault()
-    getWord(query)
-      .then(data => setWord(data[0]))
+    if (!query) {
+      setSearchEmpty(true)
+    } else {
+      setSearchEmpty(false)
+      getWord(query)
+        .then(data => setWord(data[0]))
+    }
   }
   
   useEffect(() => {
@@ -35,14 +39,14 @@ function App() {
           <img src={logo}/>
           <div className='nav-right'>
             <select value={font} onChange={(e)=>setFont(e.target.value)}>
-              <option value='sans-serif'>Sans Serif</option>
-              <option value='serif'>Serif</option>
-              <option value='monospace'>Mono</option>
+              <option style={{fontFamily: 'sans-serif'}} value='sans-serif'>Sans Serif</option>
+              <option style={{fontFamily: 'serif'}} value='serif'>Serif</option>
+              <option style={{fontFamily: 'monospace'}} value='monospace'>Mono</option>
             </select>
-            <img className='toggle' src={isDark ? toggleDark : toggleLight} onClick={() => setIsDark(!isDark)}/>
+            <div className='toggle' onClick={() => setIsDark(!isDark)}/>
           </div>
         </nav>
-        <Searchbar query={query} setQuery={setQuery} submitSearch={submitSearch}/>
+        <Searchbar query={query} setQuery={setQuery} submitSearch={submitSearch} searchEmpty={searchEmpty}/>
         <div className='word-container'>
           <div className='word-column'>
             <h1>
@@ -53,8 +57,9 @@ function App() {
             </p>
           </div>
           {word && meanings}
-          <p>Source</p>
-          <a className='source' href={word?.sourceUrls[0]}>{word?.sourceUrls[0]}</a>
+          <div className='seperator full-seperator'/>
+          <p className='source-heading'>Source</p>
+          <a className='source' href={word?.sourceUrls[0]}>{word?.sourceUrls[0]}<img className='new-window' src={newWindow}/></a>
         </div>
       </div>
     </main>
