@@ -1,5 +1,4 @@
 import logo from './images/logo.svg'
-import moon from './images/icon-moon.svg'
 import toggleLight from './images/Group.svg'
 import toggleDark from './images/Group2.svg'
 import { useState, useEffect,  } from 'react';

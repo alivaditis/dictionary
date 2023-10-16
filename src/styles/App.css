@@ -10,23 +10,13 @@
 :root [data-theme='light'] {
   --background: #FFF;
   --text-primary: #2D2D2D;
-  --text-accent: #ea5355;
-  --button-background: #e5dccf; 
-  --button-hover: #ea5355;
-  --icon-filter: sepia(44%);
-  --icon-hover-filter: invert(31%);
-  --journal-icon-filter: invert(100%);
+  --search-background: #F4F4F4; 
 }
 
 :root [data-theme='dark'] {
   --background: #050505;
   --text-primary: #FFF;
-  --text-accent: #ea5355;
-  --button-background: #e5dccf; 
-  --button-hover: #ea5355;
-  --icon-filter: sepia(44%);
-  --icon-hover-filter: invert(31%);
-  --journal-icon-filter: invert(100%);
+  --search-background: #1F1F1F;
 }
 
 main {
@@ -35,6 +25,10 @@ main {
   display: flex;
   justify-content: center;
   min-height: 100vh;
+}
+
+.app {
+ width: 327px;
 }
 
 nav {
@@ -60,8 +54,19 @@ select {
   color: var(--text-primary);
 }
 
-.app {
- width: 327px;
+.searchbar {
+  display: flex;
+  
+}
+
+input {
+  width: 100%;
+  background-color: var(--search-background);
+  color: var(--text-primary)
+}
+
+.submit {
+  background-color: var(--search-background);
 }
 
 h1 {
