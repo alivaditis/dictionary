@@ -43,7 +43,7 @@ function App() {
       .catch(() => setApiError(true))
   }, [])
   
-  const meanings = word?.meanings.map(meaning => <Meaning meaning={meaning}/>)
+  const meanings = word?.meanings.map((meaning, i) => <Meaning key={i} meaning={meaning}/>)
 
   return (
     <main data-theme={isDark ? 'dark' : 'light'} style={{fontFamily: font}}>
