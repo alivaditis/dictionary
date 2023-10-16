@@ -13,14 +13,14 @@ type MeaningProps = {
 }
 
 const Meaning = ({meaning}: {meaning: MeaningProps}) => {
-  const definitions = meaning.definitions.map(definition => {
+  const definitions = meaning.definitions.map((definition, i) => {
     return (
-      <>
+      <div key={i}>
         <li>
           <span>{definition.definition}</span>
         </li>
         {definition.example && <p className='example'> "{definition.example}"</p>}
-      </>)
+      </div>)
     })
 
 

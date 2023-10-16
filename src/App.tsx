@@ -11,8 +11,16 @@ function App() {
   const [word, setWord] = useState<SingleWord | undefined>()
   const [query, setQuery] = useState('')
   const [searchEmpty, setSearchEmpty] = useState(false)
+  const [apiError, setApiError] = useState(false)
   const [isDark, setIsDark] = useState(true)
   const [font, setFont] = useState('sans-serif')
+
+  
+  const audio = new Audio(word?.phonetics[0].audio)
+
+  const playAudio = () => {
+    audio.play()
+  }
 
   const submitSearch = (e: React.FormEvent) => {
     e.preventDefault()
@@ -21,16 +29,21 @@ function App() {
     } else {
       setSearchEmpty(false)
       getWord(query)
-        .then(data => setWord(data[0]))
+        .then(data => {
+          setWord(data[0])
+          setApiError(false)
+        })
+        .catch(() => setApiError(true))
+      }
     }
-  }
-  
-  useEffect(() => {
-    getWord('word')
-    .then(data => setWord(data[0]))
+    
+    useEffect(() => {
+      getWord('hello')
+      .then(data => setWord(data[0]))
+      .catch(() => setApiError(true))
   }, [])
   
-  const meanings = word?.meanings.map(meaning => <Meaning meaning={meaning}/>)
+  const meanings = word?.meanings.map((meaning, i) => <Meaning key={i} meaning={meaning}/>)
 
   return (
     <main data-theme={isDark ? 'dark' : 'light'} style={{fontFamily: font}}>
@@ -43,24 +56,36 @@ function App() {
               <option style={{fontFamily: 'serif'}} value='serif'>Serif</option>
               <option style={{fontFamily: 'monospace'}} value='monospace'>Mono</option>
             </select>
+            <div className='nav-seperator'/>
             <div className='toggle' onClick={() => setIsDark(!isDark)}/>
           </div>
         </nav>
         <Searchbar query={query} setQuery={setQuery} submitSearch={submitSearch} searchEmpty={searchEmpty}/>
+        {!apiError ?
         <div className='word-container'>
-          <div className='word-column'>
-            <h1>
-              {word?.word}
-            </h1>
-            <p className='phonetic'>
-              {word?.phonetics[0].text && word?.phonetics[0].text}
-            </p>
+          <div className='top-container'>
+            <div className='word-column'>
+              <h1>
+                {word?.word}
+              </h1>
+              <p className='phonetic'>
+                {word?.phonetics[0].text && word?.phonetics[0].text}
+              </p>
+            </div>
+            {word?.phonetics[0].audio && <button className='audio-button' onClick={playAudio}></button>}
           </div>
           {word && meanings}
           <div className='seperator full-seperator'/>
           <p className='source-heading'>Source</p>
           <a className='source' href={word?.sourceUrls[0]}>{word?.sourceUrls[0]}<img className='new-window' src={newWindow}/></a>
         </div>
+        :
+        <div className='api-error'>
+          <p className='sad-face'>😕</p>
+          <p className='no-def'>No Definitions Found</p>
+          <p className='sorry-pal'>Sorry pal, we couldn't find definitions for the word you were looking for. You can try the search again at later time or head to the web instead.</p>
+        </div>
+        }
       </div>
     </main>
   );
