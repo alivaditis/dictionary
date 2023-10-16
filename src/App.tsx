@@ -11,6 +11,7 @@ function App() {
   const [word, setWord] = useState<SingleWord | undefined>()
   const [query, setQuery] = useState('')
   const [searchEmpty, setSearchEmpty] = useState(false)
+  const [apiError, setApiError] = useState(false)
   const [isDark, setIsDark] = useState(true)
   const [font, setFont] = useState('sans-serif')
 
@@ -21,13 +22,18 @@ function App() {
     } else {
       setSearchEmpty(false)
       getWord(query)
-        .then(data => setWord(data[0]))
+        .then(data => {
+          setWord(data[0])
+          setApiError(false)
+        })
+        .catch(() => setApiError(true))
+      }
     }
-  }
-  
-  useEffect(() => {
-    getWord('word')
-    .then(data => setWord(data[0]))
+    
+    useEffect(() => {
+      getWord('word')
+      .then(data => setWord(data[0]))
+      .catch(() => setApiError(true))
   }, [])
   
   const meanings = word?.meanings.map(meaning => <Meaning meaning={meaning}/>)
@@ -47,6 +53,7 @@ function App() {
           </div>
         </nav>
         <Searchbar query={query} setQuery={setQuery} submitSearch={submitSearch} searchEmpty={searchEmpty}/>
+        {!apiError ?
         <div className='word-container'>
           <div className='word-column'>
             <h1>
@@ -61,6 +68,11 @@ function App() {
           <p className='source-heading'>Source</p>
           <a className='source' href={word?.sourceUrls[0]}>{word?.sourceUrls[0]}<img className='new-window' src={newWindow}/></a>
         </div>
+        :
+        <div>
+          <p>no definitions found</p>
+        </div>
+        }
       </div>
     </main>
   );
