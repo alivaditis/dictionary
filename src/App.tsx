@@ -12,10 +12,9 @@ function App() {
   const [query, setQuery] = useState('')
   const [searchEmpty, setSearchEmpty] = useState(false)
   const [apiError, setApiError] = useState(false)
-  const [isDark, setIsDark] = useState(true)
+  const [isDark, setIsDark] = useState(false)
   const [font, setFont] = useState('sans-serif')
 
-  
   const audio = new Audio(word?.phonetics[0]?.audio)
 
   const playAudio = () => {
@@ -36,14 +35,21 @@ function App() {
         .catch(() => setApiError(true))
       }
     }
-    
-    useEffect(() => {
-      getWord('hello')
+  
+  const getWordBySynonym = (synonym: string) => {
+    setQuery('')
+    getWord(synonym)
+      .then(data => setWord(data[0]))
+      .catch(() => setApiError(true))
+  }  
+
+  useEffect(() => {
+    getWord('hello')
       .then(data => setWord(data[0]))
       .catch(() => setApiError(true))
   }, [])
   
-  const meanings = word?.meanings.map((meaning, i) => <Meaning key={i} meaning={meaning}/>)
+  const meanings = word?.meanings.map((meaning, i) => <Meaning key={i} meaning={meaning} getWordBySynonym={getWordBySynonym}/>)
 
   return (
     <main data-theme={isDark ? 'dark' : 'light'} style={{fontFamily: font}}>

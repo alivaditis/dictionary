@@ -1,18 +1,22 @@
 import React from 'react';
 
 type MeaningProps = {
-  partOfSpeech: string;
-  definitions: {
-    definition: string;
+  meaning: {
+    partOfSpeech: string;
+    definitions: {
+      definition: string;
+      synonyms: string[];
+      antonyms: string[];
+      example?: string;
+    }[];
     synonyms: string[];
     antonyms: string[];
-    example?: string;
-  }[];
-  synonyms: string[];
-  antonyms: string[];
+  }
+  getWordBySynonym: (synonym: string) => void;
 }
 
-const Meaning = ({meaning}: {meaning: MeaningProps}) => {
+const Meaning: React.FC<MeaningProps> = ({meaning, getWordBySynonym}) => {
+  
   const definitions = meaning.definitions.map((definition, i) => {
     return (
       <div key={i}>
@@ -23,6 +27,7 @@ const Meaning = ({meaning}: {meaning: MeaningProps}) => {
       </div>)
     })
 
+  const synonyms = meaning.synonyms.map((synonym, i) => <span className='synonym' key={i} onClick={(e) => getWordBySynonym(synonym)}>{synonym}</span>)
 
   return (
     <div className='meanings'>
@@ -34,7 +39,7 @@ const Meaning = ({meaning}: {meaning: MeaningProps}) => {
       <ul>
         {definitions}
       </ul>
-      <p className='synonym-line'>{meaning.synonyms.length>0 && 'Synonynms'} <span className='synonym'>{meaning.synonyms[0]}</span></p>
+      <p className='synonym-line'>{meaning.synonyms.length>0 && 'Synonynms'} {synonyms} </p>
     </div>
   )
 }

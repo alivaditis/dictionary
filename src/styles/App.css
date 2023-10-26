@@ -204,6 +204,11 @@ li span {
 .synonym {
   margin-left: 24px;
   font-weight: 700;
+  white-space: nowrap;
+}
+
+.synonym:hover {
+  cursor: pointer;
 }
 
 .full-seperator {
