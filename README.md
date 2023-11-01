@@ -20,8 +20,9 @@ A dictionary app built using Figma design specs and design system provided by [F
 ## Preview of App:
 
 <div align="center">
-  ![Screen Shot 2023-11-01 at 4 48 06 PM](https://github.com/alivaditis/dictionary/assets/123565022/d3b4f6c5-0355-427c-bad1-6ef754b4fad6)
-  ![Screen Shot 2023-11-01 at 4 24 43 PM](https://github.com/alivaditis/dictionary/assets/123565022/eee24680-8a43-4820-bab2-e9d576676902)
+ ![Screen Shot 2023-11-01 at 4 53 30 PM](https://github.com/alivaditis/dictionary/assets/123565022/665990f2-d66b-4a9b-9fbc-412f2d39843d)
+![Screen Shot 2023-11-01 at 4 25 20 PM](https://github.com/alivaditis/dictionary/assets/123565022/68957345-7a14-4ed7-a6d4-fbdfb2bfe3d2)
+
 </div>
 
 ## Installation Instructions 
