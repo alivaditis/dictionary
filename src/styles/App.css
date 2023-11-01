@@ -195,16 +195,25 @@ li span {
   margin-top: 13px;
 }
 
-.synonym-line {
+.synonym-container {
+  display: flex;
   margin-top: 24px;
+}
+
+.synonym-line {
   font-size: 16px;
   font-weight: 400;
 }
 
-.synonym {
+.synonyms {
   margin-left: 24px;
+  word-wrap: normal;
+}
+
+.synonym {
   font-weight: 700;
-  white-space: nowrap;
+  margin-right: 12px;
+  display: inline-block;
 }
 
 .synonym:hover {

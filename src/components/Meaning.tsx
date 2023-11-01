@@ -39,7 +39,12 @@ const Meaning: React.FC<MeaningProps> = ({meaning, getWordBySynonym}) => {
       <ul>
         {definitions}
       </ul>
-      <p className='synonym-line'>{meaning.synonyms.length>0 && 'Synonynms'} {synonyms} </p>
+      <div className='synonym-container'>
+        <p className='synonym-line'>{meaning.synonyms.length>0 && 'Synonynms'} </p>
+        <div className='synonyms'>
+          {synonyms}
+        </div>
+      </div>
     </div>
   )
 }
