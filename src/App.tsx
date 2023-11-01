@@ -82,8 +82,10 @@ function App() {
           </div>
           {word && meanings}
           <div className='seperator full-seperator'/>
-          <p className='source-heading'>Source</p>
-          <a className='source' href={word?.sourceUrls[0]}>{word?.sourceUrls[0]}<img className='new-window' src={newWindow}/></a>
+          <div className='source-container'>
+            <p className='source-heading'>Source</p>
+            <a className='source' href={word?.sourceUrls[0]}>{word?.sourceUrls[0]}<img className='new-window' src={newWindow}/></a>
+          </div>
         </div>
         :
         <div className='api-error'>
