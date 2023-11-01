@@ -1,46 +1,45 @@
-# Getting Started with Create React App
+<div align="center">
+<h1> Dictionary </h1>
+<br> 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<br>
+<b>Built With:</b>
+<br>
 
-## Available Scripts
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+  <img src="https://shields.io/badge/TypeScript-3178C6?logo=TypeScript&logoColor=FFF&style=flat-square" /> 
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" /> 
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" />
 
-In the project directory, you can run:
+[Dictionary DEPLOYED LINK](https://dictionary-alivaditis.vercel.app/)
+</div>
 
-### `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Abstract: 
+A dictionary app built using Figma design specs and design system provided by [Frontend Mentor](https://www.frontendmentor.io/challenges/dictionary-web-app-h5wwnyuKFL) and the [Dictionary API](https://dictionaryapi.dev/)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+A website for sci-fi readers that uses the fetch API to get information from the [Google Books Api](https://developers.google.com/books) and render that data. Users can search for sci-fi books, view information for a specific book, and save them to a 'want to read', 'currently reading', or 'read' shelf. Additionally uses can browse curated lists, which are accessed through the bookshelves enpoint of the Google Books Api. The app uses network requests to access information about sci-fi books, utilizes react router to create a multi-page experience, handles user authentication and data with firebase auth/database, and is e2e tested using Cypress.
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
+## Preview of App:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<div align="center">
+  ![Screen Shot 2023-11-01 at 4 48 06 PM](https://github.com/alivaditis/dictionary/assets/123565022/d3b4f6c5-0355-427c-bad1-6ef754b4fad6)
+  ![Screen Shot 2023-11-01 at 4 24 43 PM](https://github.com/alivaditis/dictionary/assets/123565022/eee24680-8a43-4820-bab2-e9d576676902)
+</div>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Installation Instructions 
+- Clone to your local machine using the command: `git clone git@github.com:alivaditis/dictionary.git`.
+- Run the command: `cd dictionary`
+- Run the command: `npm install`
+- Run the command: `npm start`
+- Once the modules have finished compiling, enter `http://localhost:3000/` into your browser to see the live web page. 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Learning Goals:
+- Practice using Figma design specs and design systems in the development process
+- Practice using Typescript in a React setting
+- Write DRY, reusable code that follows SRP and trends toward function purity
+- Make network requests (using fetch API)
+- Further improve React fundamentals
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
