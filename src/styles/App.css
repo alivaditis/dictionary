@@ -51,7 +51,7 @@ select:hover {
 .nav-seperator {
   margin-left: 16px;
   width: 1px;
-  border: solid .5px;
+  border: solid var(--seperator-color) .5px;
 }
 
 .toggle {
@@ -154,7 +154,7 @@ input:focus  {
 
 .seperator {
   margin-left: 20px;
-  border: solid .5px;
+  border: solid var(--seperator-color) .5px;
   width: 100%;
 }
 
@@ -209,6 +209,8 @@ li span {
 
 .synonym:hover {
   cursor: pointer;
+  text-decoration: underline;
+  font-style: italic;
 }
 
 .full-seperator {
@@ -223,14 +225,16 @@ li span {
   font-weight: 400;
   line-height: normal;
   text-decoration-line: underline;
+  color: var(--text-secondary);
 }
 
 .source {
+  font-size: 14px;
   margin-top: 8px;
   text-decoration: none;
-  color: var(--text-secondary);
   display: inline-block;
-  margin-bottom: 85px;  
+  margin-bottom: 85px;
+  color: var(--te)
 }
 
 .new-window {
@@ -266,6 +270,31 @@ li span {
 @media screen and (min-width: 768px) {
   .app {
     width: 688px;
+  }
+  
+  .searchbar {
+    margin-top: 51.5px;
+  }
+  
+  .phonetic, .part-of-speech {
+    font-size: 24px;
+  }
+  
+  ul, .example {
+    font-size: 18px;
+  }
+  
+  .synonym-line {
+    font-size: 20px;
+  }
+
+  .source-container {
+    display: flex;
+    align-items: first baseline;
+  }
+
+  .source {
+    margin-left: 25px;
   }
 }
 
